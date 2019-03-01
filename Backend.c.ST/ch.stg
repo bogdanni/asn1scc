@@ -95,6 +95,8 @@ flag <sName>_Decode(<sName><sStar> pVal, BitStream* pBitStrm, int* pErrCode);
 XER_encPrototypes(sName, sStar) ::= <<
 flag <sName>_XER_Encode(const <sName><sStar> val, ByteStream* pByteStrm, int* pErrCode, flag bCheckConstraints);
 flag <sName>_XER_Decode(<sName><sStar> pVal, ByteStream* pByteStrm, int* pErrCode);
+flag <sName>_XER_Encode_aux(const <sName><sStar> val, const char* xmlTag, ByteStream* pByteStrm, int* pErrCode, flag bCheckConstraints);
+flag <sName>_XER_Decode_aux(<sName><sStar> pVal, const char* xmlTag, ByteStream* pByteStrm, int* pErrCode);
 >>
 
 BER_encPrototypes(sName, sStar) ::= <<
