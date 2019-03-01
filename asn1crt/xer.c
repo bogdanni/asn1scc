@@ -24,7 +24,7 @@ char* Int2String(asn1SccSint v) {
 
 char* Double2String(double v) {
     static char tmp[256];
-    snprintf(tmp, sizeof(tmp), "%#.12E",v);
+    snprintf(tmp, sizeof(tmp), "%#.24E",v);
 
     return tmp;
 }
@@ -557,7 +557,7 @@ flag Xer_EncodeOctetString(ByteStream* pByteStrm, const char* elementTag, const 
 
     for(i=0;i<nCount;i++) {
         char tmp[3];
-        sprintf(tmp,"%02X", value[i]);
+        snprintf(tmp, sizeof(tmp), "%02X", value[i]);
         if (!ByteStream_AppendString(pByteStrm,tmp))
             return FALSE;
 
