@@ -63,7 +63,7 @@ typedef <sTypeDecl> <sName><sArrayPostfix>;
 #define <sName>_REQUIRED_BITS_FOR_ENCODING        <nMaxBitsInPER>
 #define <sName>_REQUIRED_BYTES_FOR_ACN_ENCODING   <nMaxBytesInACN> 
 #define <sName>_REQUIRED_BITS_FOR_ACN_ENCODING    <nMaxBitsInACN>
-#define <sName>_REQUIRED_BYTES_FOR_XER_ENCODING   <nMaxBytesInXER>
+#define <sName>_REQUIRED_BYTES_FOR_XER_ENCODING   (<nMaxBytesInXER> + 1)
 
 void <sName>_Initialize(<sName><sStar> pVal);
 flag <sName>_IsConstraintValid(const <sName><sStar> val, int* pErrCode);
