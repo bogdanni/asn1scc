@@ -14,9 +14,9 @@
 char* Int2String(asn1SccSint v) {
     static char tmp[256];
 #if WORD_SIZE==8
-    sprintf(tmp,"%lld",v);
+    snprintf(tmp, sizeof(tmp), "%lld", v);
 #else
-    sprintf(tmp,"%ld",v);
+    snprintf(tmp, sizeof(tmp), "%ld", v);
 #endif
 
     return tmp;
@@ -24,15 +24,7 @@ char* Int2String(asn1SccSint v) {
 
 char* Double2String(double v) {
     static char tmp[256];
-    char* pos1 = NULL;
-    sprintf(tmp,"%#.12E",v);
-
-    pos1 = strchr(tmp,'+');
-    if (pos1!=NULL) {
-        *pos1=0x0;
-        strcat(tmp, ++pos1);
-    }
-
+    snprintf(tmp, sizeof(tmp), "%#.12E",v);
 
     return tmp;
 }
