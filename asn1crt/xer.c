@@ -23,8 +23,27 @@ char* Int2String(asn1SccSint v) {
 }
 
 char* Double2String(double v) {
+    if (fabs(v) < 1e-17)
+        return "0";
+
     static char tmp[256];
-    snprintf(tmp, sizeof(tmp), "%#.24E", v);
+    int exponent = 0;
+
+    while (fabs(v) >= 10) {
+        v /= 10;
+        exponent++;
+    }
+
+    while (fabs(v) < 1) {
+        v *= 10;
+        exponent--;
+    }
+
+    if (fabs(fabs(v) - llabs((asn1SccSint) v)) < 1e-17) {
+        snprintf(tmp, sizeof(tmp), "%.1fE%d", v, exponent);
+    } else {
+        snprintf(tmp, sizeof(tmp), "%.17gE%d", v, exponent);
+    }
 
     return tmp;
 }
