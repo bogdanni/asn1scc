@@ -708,7 +708,7 @@ flag CharToNibble(char c, byte* pNibble) {
 
 flag Xer_DecodeOctetString(ByteStream* pByteStrm, const char* elementTag, byte value[], long* nCount, int *pErrCode)
 {
-    char tmp[2048];
+    char tmp[4096];
     int len=0;
     int i;
     int j=0;
