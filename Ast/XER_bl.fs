@@ -55,7 +55,7 @@ let rec GetMaxSizeInBytesForXER (t:Ast.Asn1Type) (xmlTag:string) (r:Ast.AstRoot)
             aux maxName
         | Integer           -> System.Int64.MinValue.ToString().Length
         | BitString         -> int(GetSizeableMaxItems t) * 8
-        | OctetString       -> int(GetSizeableMaxItems t) * 2
+        | OctetString       -> int(GetSizeableMaxItems t) * 4
         | Real              -> 50
         | NullType          -> 0
         | IA5String     
