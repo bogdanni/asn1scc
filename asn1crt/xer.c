@@ -23,10 +23,16 @@ char* Int2String(asn1SccSint v) {
 }
 
 char* Double2String(double v) {
+    static char tmp[256];
+
+    if (!isfinite(v)) {
+        snprintf(tmp, sizeof(tmp), "%f", v);
+        return tmp;
+    }
+
     if (fabs(v) < 1e-17)
         return "0";
 
-    static char tmp[256];
     int exponent = 0;
 
     while (fabs(v) >= 10) {
